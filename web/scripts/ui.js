@@ -790,6 +790,13 @@ export class ComfyUI {
 					}
 				}
 			}),
+			$el("button", {
+				id: "comfy-reboot-server-button-large", textContent: "Stop ComfyUI", onclick: () => {
+					if (confirm("Are you sure you'd like to stop the server?")) {
+						api.fetchApi("/terminate")
+					}
+				}
+			})
 		]);
 
 		const devMode = this.settings.addSetting({

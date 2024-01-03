@@ -125,6 +125,11 @@ class PromptServer():
         async def get_root(request):
             return web.FileResponse(os.path.join(self.web_root, "index.html"))
 
+        @routes.get("/terminate")
+        async def restart(self):
+            print("raising KeyboardInterrupt.")
+            raise KeyboardInterrupt
+
         @routes.get("/embeddings")
         def get_embeddings(self):
             embeddings = folder_paths.get_filename_list("embeddings")
